@@ -4,7 +4,7 @@
     document.getElementById('decrypt-form').addEventListener('submit', function(e) {
         e.preventDefault();
         var passphrase = document.getElementById('decrypt-field').value,
-            encryptedMsg = '78e0b3919ac511a6631b4810297502186a39a8f50890ca8d7c4bfd148b6e0e78U2FsdGVkX19CJTu+lTOblG2HtAA2bsm1gIOnZiR7bkxCaA04z1/i1qNMPk6gUNz14pB0wUDoGENHhxi2MUD1BcIwChpmO9bYw3pLuPbX/MOQxXJb9lBpcP+oEpIB0d37nuoaCt63DNT8ADVmo0lIdJ2wAuUni/IpeZBV8gt1YPRjZM4pgQsd6gMr7lgd9YHUktRSY16PYabDA1AFJaT723WmdmQ17Hgn1DSQeX0mSvQ=',
+            encryptedMsg = '9eb3acd3f95ec39634a419ece49b97878530deabcfd138035a1702b57b086743U2FsdGVkX18sRFJcc+aMDyyZsERk5w1m/veUV5Et4X5ntljqrZnB8kT0uf2sz4YehcQG1F1jElWyTECWdbtzRCF67DobmUNFsY6HHzEbi7/0LXI97UbZHvxtaHNoFz+QDT1tnla4NcREepFyalfoaYhTvoLHZsxPKe0TzJ6dYrq3iKwdKS3U9TSt9XVNoSkWKC5/Ip4fnMJkLBDnJ9dZTCqc0pW9TbBpG/es+og7Bv8=',
             encryptedHMAC = encryptedMsg.substring(0, 64),
             encryptedHTML = encryptedMsg.substring(64),
             decryptedHMAC = CryptoJS.HmacSHA256(encryptedHTML, CryptoJS.SHA256(passphrase).toString()).toString();
