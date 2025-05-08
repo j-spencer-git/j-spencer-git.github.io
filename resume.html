@@ -1,18 +1,20 @@
 <!DOCTYPE html> <html> <head> <meta charset="utf-8"> <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/> <meta name="description" content="Look Development Artist | TD"> <title>Resume</title> <link rel="stylesheet" href="/includes/css/style.min.css" type="text/css"> <script type="text/javascript" src="/includes/js/custom.min.js" defer></script> <link rel="icon" href="/includes/icons/icon.png" type="image/x-icon"> <link rel="icon" href="/includes/icons/favicon.png" type="image/x-icon"> </head> <body class="body no-js"> <script>
     document.body.classList.remove('no-js');
-    </script> <header id="site-header" class="init resume"> <div class="header-wrap"> <div class="header-title-wrap"> <a href="/" class="nav anim-link"> <h1 class="site-title hue-rotate">Jackson Spencer</h1> </a> <h2 class="site-tagline"> Look&nbsp;Development&nbsp;Artist&nbsp;<span class="divider">|</span>&nbsp;TD </h2> </div> <div class="nav-menu-wrap"> <nav class="nav-menu"> <a href="/projects" class="nav anim-link">Projects</a> <span class="divider">&nbsp;|&nbsp;</span> <a href="/resume" class="nav anim-link">Resume</a> </nav> </div> </div> </header> <main class="init content resume" role="main"> <div id="encrypted-container"> <form id="decrypt-form" action="#" method="post"> <input id="decrypt-field" type="password" name="password" placeholder="enter password"/> <input id="decrypt-btn" type="submit" value="view"/> </form> <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script> <script>
+    </script> <header id="site-header" class="init resume"> <div class="header-wrap"> <div class="header-title-wrap"> <a href="/" class="nav anim-link"> <h1 class="site-title hue-rotate">Jackson Spencer</h1> </a> <h2 class="site-tagline"> Look&nbsp;Development&nbsp;Artist&nbsp;<span class="divider">|</span>&nbsp;TD </h2> </div> <div class="nav-menu-wrap resume"> <nav class="nav-menu"> <a href="/projects" class="nav anim-link">Projects</a> <span class="divider">&nbsp;|&nbsp;</span> <a href="/resume" class="nav anim-link">Resume</a> </nav> </div> </div> </header> <main class="init content resume" role="main"> <div id="encrypted-container"> <form id="decrypt-form" action="#" method="post"> <input id="decrypt-field" type="password" name="password" placeholder="what's your favorite color?"/> <input id="decrypt-btn" type="submit" value="view"/> </form> <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script> <script>
+    const passwordRequired = false;
+    const encryptKey = "supersecret";
     document.getElementById('decrypt-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        var passphrase = document.getElementById('decrypt-field').value,
-            encryptedMsg = '14f17edea2f66e7640898c8f64b2454f3d6076aae0de057d67d90f0bec0a9671U2FsdGVkX187Fw7OUxtqe/G4jJQSzc+RIoVP6kybiEhlCJw4hXcRvWn1g6dtWtwPx0O2JW7G3kWm5tHdUqWWkYFuYCPK01zwBpLlv9zl4Hz5rDrmMCFqRoWbBobqnzX98/ul9Z0He24LE9iHGT/pz6FqpIvW4bzMMzCzHSlFXt5Rl+rBhUiVfLkGLfh53+Mey2RSzoav/ReCksf4S9TkTxLS4OZZMSZ63zhetu2dsgA=',
+        const passphrase = passwordRequired ? document.getElementById('decrypt-field').value : encryptKey;
+        var encryptedMsg = '569e83c101935f13c5f299d042fa1022090d2da3903200911db31b5783363fc8U2FsdGVkX1+hqwBngp1aTeQmzdJpN8BClvD3tY3wrdl2YCsm/WNP1W+cSafVyj2B9bZe4js00P39YXaVaHh9yj/GLyXEAPND/oR//Dg97WdFc6gzuvtoxkfxhodJPQREF1JBASL/aewiGQBy3Kfn8eZvTlgCrSiE78iYbwxL3/R2ubr0vsrt+wBMjtbPvrKe2tiqjhQLZolxgBDLK8QuU4g0Jmtteonc6N8HTLEz9js=',
             encryptedHMAC = encryptedMsg.substring(0, 64),
             encryptedHTML = encryptedMsg.substring(64),
             decryptedHMAC = CryptoJS.HmacSHA256(encryptedHTML, CryptoJS.SHA256(passphrase).toString()).toString();
-        if (decryptedHMAC !== encryptedHMAC) {
+        if (decryptedHMAC !== encryptedHMAC){
             alert('Almost!');
             return;
         }
         var plainHTML = CryptoJS.AES.decrypt(encryptedHTML, passphrase).toString(CryptoJS.enc.Utf8);
         document.getElementById('encrypted-container').innerHTML = plainHTML;
     });
-    </script> </div> </main> <footer id="site-footer" class="init"> <div class="footer-inner"> <section class="copyright">© 2011, <a href="/">Jackson Spencer</a>. All rights reserved.</section> </div> </footer> </body> </html>
+    </script> </div> </main> <footer id="site-footer" class="init resume"> <div class="footer-inner"> <section class="copyright">© 2011, <a href="/">Jackson Spencer</a>. All rights reserved.</section> </div> </footer> </body> </html>
